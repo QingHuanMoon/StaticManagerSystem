@@ -1,0 +1,156 @@
+
+body {
+    .index-section {
+        height: auto;
+        min-height: 100vh;
+        width: 100%;
+        .index-container {
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            .container-box {
+                width: 100%;
+                .whale {
+                    background: url("../static/images/whale.png") no-repeat;
+                    width: .8rem;
+                    height: .8rem;
+                    background-size: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    margin-left: -.5rem;
+                    z-index: 2;
+
+                }
+                .slide-button {
+                    font-size: .16rem;
+                }
+                .header {
+                    width: 100%;
+                    height: 10vh;
+                    margin-top: .2rem;
+                    .header-up {
+                        width: 100%;
+                        height: 40%;
+                        .bread {
+                            width: 10rem;
+                            height: 1rem;
+                            position: relative;
+                            left: .5rem;
+                            a {
+                                li {
+                                    font-size: .2rem;
+                                }
+                                .bread-active {
+                                    font-size: .2rem;
+                                }
+                            }
+                        }
+                        .btns {
+                            margin-right: 1rem;
+                            width: 10vw;
+                        }
+                        .uk-button-text {
+                            border: none;
+                            outline: none;
+                            font-size: .2rem;
+                        }
+                    }
+                    .header-down {
+                        width: 90%;
+                        margin: 0 auto;
+                        .tag-list {
+                            li {
+                                margin-right: .1rem;
+                                a {
+                                    font-size: .18rem;
+                                }
+                            }
+                        }
+                    }
+                }
+                .content-box {
+                    width: 90%;
+                    height: 80vh;
+                    margin:2.5vh auto;
+                    .close-btn {
+                        background: url("../static/images/close.png") no-repeat;
+                        width: .35rem;
+                        height: .35rem;
+                        background-size: cover;
+                        position: relative;
+                        top: -10px;
+                        left: 10px;
+                        z-index: 99;
+                    }
+                    .add-btn {
+                        background: url("../static/images/add.png") no-repeat;
+                        width: .35rem;
+                        height: .35rem;
+                        background-size: cover;
+                        position: absolute;
+                        top: 13vh;
+                        right: 4vw;
+                        z-index: 99;
+                    }
+
+                    .card-box {
+                        width: 100%;
+                        border-radius: .25rem;
+                        overflow-y: auto;
+                        .item-title {
+                            font-size: .2rem;
+                        }
+                        .article-info {
+                            font-size: .16rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .page {
+        position: absolute;
+        bottom: 3.5vh;
+        left: 50%;
+        height: 1vh;
+        font-size: .16rem;
+        transform: translate(-50%, 0);
+    }
+    .button-group {
+        button {
+            font-size: .16rem;
+            width: 1rem;
+            height: .3rem;
+            position: relative;
+            top: -.4rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+}
+//重寫導航樣式
+
+
+.uk-offcanvas-bar {
+  background-color: #fff;
+  .uk-parent {
+      a {
+          font-size: .4rem;
+      }
+    .uk-nav-sub {
+      font-size: .2rem;
+    }
+  }
+  .uk-close {
+    color: red;
+  }
+}
+
+::-webkit-scrollbar {width: 0;}
+
+
+
