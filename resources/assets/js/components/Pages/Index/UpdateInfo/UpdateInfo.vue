@@ -1,6 +1,6 @@
 <template>
     <div class="uk-flex uk-flex-middle info-box uk-flex-column">
-        <div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-flex-column">
+        <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column">
             <h3 class="title">這裡暫時會提供一些更新信息</h3>
             <p class="f-title">已經實現:</p>
             <ol>

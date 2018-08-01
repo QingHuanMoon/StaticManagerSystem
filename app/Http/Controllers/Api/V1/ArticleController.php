@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Helper\Helper;
 use App\Models\Article;
 use App\Models\Game;
 use DemeterChain\A;
 use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Home\ArticleController as ArticleCtrl;
 
-class ArticleController extends Controller
+class ArticleController extends ApiController
 {
     /**
      * Display a listing of the resource.

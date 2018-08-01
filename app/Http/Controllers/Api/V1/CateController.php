@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Cate\CateCollection;
 use App\Models\Cate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CateController extends Controller
+class CateController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -30,8 +30,8 @@
                             <router-link :to="{name: 'Register'}"><button class="uk-button-text register">註冊</button></router-link>
                         </div>
                         <div class="btns uk-flex uk-flex-around" v-if="this.$store.state.Login.Authenticate">
-                            <button class="uk-button-text login">個人中心</button>
-                            <button class="uk-button-text login" @click="logout">退出登錄</button>
+                            <router-link :to="{name: 'AdminInfo'}"><button class="uk-button-text login">個人中心</button></router-link>
+                            <router-link to=''><button class="uk-button-text register" @click="logout">退出登錄</button></router-link>
                         </div>
                     </div>
                     <div class="header-down">
@@ -59,7 +59,7 @@
                                 <span class="uk-flex uk-flex-center uk-flex-middle">所屬分類: {{$store.state.Article.cate_name}}</span>
                             </div>
                         </div>
-                        <router-view></router-view>
+                        <router-view />
                     </div>
                 </div>
             </div>

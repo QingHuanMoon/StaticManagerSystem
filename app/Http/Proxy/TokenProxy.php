@@ -27,6 +27,7 @@ class TokenProxy
             'client_secret'=> env('PASSPORT_CLIENT_SECRET'),
             'grant_type'=> $grandType,
         ]);
+        dd($data);
         $response = $this->http->post(Helper::getHost() . '/oauth/token',[
             'form_params' => $data
         ]);

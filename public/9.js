@@ -1,6 +1,58 @@
 webpackJsonp([9],{
 
-/***/ 106:
+/***/ 104:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(168)
+}
+var normalizeComponent = __webpack_require__(108)
+/* script */
+var __vue_script__ = __webpack_require__(171)
+/* template */
+var __vue_template__ = __webpack_require__(172)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6f1fc211"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Pages/Login/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6f1fc211", Component.options)
+  } else {
+    hotAPI.reload("data-v-6f1fc211", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -19,7 +71,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(108)
+var listToStyles = __webpack_require__(109)
 
 /*
 type StyleObject = {
@@ -229,7 +281,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -339,7 +391,7 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 108:
+/***/ 109:
 /***/ (function(module, exports) {
 
 /**
@@ -373,23 +425,23 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 126:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(127);
+var content = __webpack_require__(169);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(106)("119c3f62", content, false, {});
+var update = __webpack_require__(107)("2ca011bf", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4520be00\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UpdateInfo.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4520be00\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UpdateInfo.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f1fc211\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f1fc211\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -400,22 +452,30 @@ if(false) {
 
 /***/ }),
 
-/***/ 127:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(9);
 exports = module.exports = __webpack_require__(1)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.info-box[data-v-4520be00] {\n  font-size: 0.28rem;\n  text-align: center;\n}\n.info-box .title[data-v-4520be00] {\n  font-size: 0.24rem;\n}\n.info-box ol li[data-v-4520be00] {\n  font-size: 0.18rem;\n}\n", ""]);
+exports.push([module.i, "\n.login-page[data-v-6f1fc211] {\n  width: 100%;\n  height: 100vh;\n}\n.login-page .login-container[data-v-6f1fc211] {\n  width: 100%;\n  height: 100%;\n}\n.login-page .login-container .login-card[data-v-6f1fc211] {\n  width: 10rem;\n  height: 6.18rem;\n  margin: 0;\n  padding: 0;\n}\n.login-page .login-container .login-card .login-img[data-v-6f1fc211] {\n  background: url(" + escape(__webpack_require__(170)) + ") no-repeat;\n  width: 6.18rem;\n  height: 100%;\n  background-size: cover;\n}\n.login-page .login-container .login-card .login-form[data-v-6f1fc211] {\n  width: 3.82rem;\n  height: 100%;\n}\n.login-page .login-container .login-card .login-form form[data-v-6f1fc211] {\n  width: 90%;\n  height: 61.8%;\n}\n.login-page .login-container .login-card .login-form form button[data-v-6f1fc211] {\n  font-size: 0.16rem;\n  margin-top: 0.2rem;\n}\n.login-page .login-container .login-card .login-form form input[data-v-6f1fc211] {\n  width: 2.7rem;\n  font-size: 0.16rem;\n}\n.login-page .login-container .login-card .login-form form p[data-v-6f1fc211] {\n  font-size: 0.16rem;\n  margin-top: 0.1rem;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 128:
+/***/ 170:
+/***/ (function(module, exports) {
+
+module.exports = "/images/whale-login.jpg?05b28b71787c0366a6d6f7abeb2f5521";
+
+/***/ }),
+
+/***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -448,107 +508,252 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Login',
   data: function data() {
-    return {};
+    return {
+      loginData: {
+        email: '',
+        password: ''
+      }
+    };
+  },
+
+  methods: {
+    login: function login() {
+      this.$store.dispatch('loginRequest', this.loginData);
+    }
+  },
+  computed: {
+    getAuthenticate: function getAuthenticate() {
+      return this.$store.state.Login.Authenticate;
+    }
+  },
+  watch: {
+    getAuthenticate: function getAuthenticate(val) {
+      var _this = this;
+
+      if (val) {
+        this.$Notice.success({
+          title: '恭喜你登錄成功',
+          desc: '請耐心等待,頁面即將跳轉'
+        });
+        setTimeout(function () {
+          _this.$router.push({ path: '/' });
+        }, 1500);
+      }
+    }
   }
 });
 
 /***/ }),
 
-/***/ 129:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "uk-section-muted login-page" }, [
+    _c(
+      "section",
+      {
+        staticClass:
+          "uk-container uk-container-expand uk-flex uk-flex-center uk-flex-middle login-container"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-card uk-card-default uk-card-hover uk-card-body login-card uk-flex uk-flex-center"
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "login-form uk-flex uk-flex-column uk-flex-middle uk-flex-center"
+              },
+              [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "uk-flex uk-flex-column uk-flex-middle uk-flex-around",
+                    attrs: { method: "POST" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.login($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "uk-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.loginData.email,
+                            expression: "loginData.email"
+                          },
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: { required: true, email: true },
+                            expression: "{required: true, email: true}"
+                          }
+                        ],
+                        staticClass: "uk-input",
+                        attrs: {
+                          type: "text",
+                          placeholder: "請輸入郵箱",
+                          name: "email",
+                          "data-vv-as": "郵箱"
+                        },
+                        domProps: { value: _vm.loginData.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.loginData,
+                              "email",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("email"),
+                              expression: "errors.has('email')"
+                            }
+                          ],
+                          staticClass:
+                            "error uk-flex uk-flex-center uk-flex-middle"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("email")))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.loginData.password,
+                            expression: "loginData.password"
+                          },
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: { required: true, min: 6 },
+                            expression: "{required: true, min: 6}"
+                          }
+                        ],
+                        staticClass: "uk-input",
+                        attrs: {
+                          type: "password",
+                          placeholder: "請輸入密碼",
+                          name: "password",
+                          "data-vv-as": "密碼"
+                        },
+                        domProps: { value: _vm.loginData.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.loginData,
+                              "password",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("password"),
+                              expression: "errors.has('password')"
+                            }
+                          ],
+                          staticClass:
+                            "error uk-flex uk-flex-center uk-flex-middle"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("password")))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "uk-flex uk-flex-center uk-flex-middle" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "uk-button uk-button-primary",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("登錄")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "Register" } } },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "uk-button uk-button-primary",
+                                staticStyle: { "margin-left": "20px" }
+                              },
+                              [_vm._v("沒有賬號")]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "uk-flex uk-flex-middle info-box uk-flex-column" },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-flex uk-flex-center uk-flex-middle uk-text-center uk-flex-column"
-          },
-          [
-            _c("h3", { staticClass: "title" }, [
-              _vm._v("這裡暫時會提供一些更新信息")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "f-title" }, [_vm._v("已經實現:")]),
-            _vm._v(" "),
-            _c("ol", [
-              _c("li", [_vm._v("正常登陸註冊, 退出登錄(使用Oauth2.0)")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("新聞正常發佈流程")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("文章自動緩存(包括圖片->轉換base64編碼)")]),
-              _vm._v(" "),
-              _c("li", [
-                _vm._v(
-                  "文章靜態頁404跳轉邏輯(有規則的正確的靜態地址->自動重建緩存->跳轉)"
-                )
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-flex uk-flex-center uk-flex-middle uk-text-center uk-flex-column"
-          },
-          [
-            _c("p", { staticClass: "p-title" }, [_vm._v("正在開發:")]),
-            _vm._v(" "),
-            _c("ol", [
-              _c("li", [_vm._v("手動刷新緩存功能,多模板使用隊列實現")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("前端實現無限極分類的添加管理")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("註冊用戶郵件激活")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("根據子域名的不同鏈接不一樣的數據庫")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-flex uk-flex-center uk-flex-middle uk-text-center uk-flex-column"
-          },
-          [
-            _c("p", { staticClass: "p-title" }, [_vm._v("計劃實現:")]),
-            _vm._v(" "),
-            _c("ol", [
-              _c("li", [_vm._v("全站數據實時更新(使用websocket實現)")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("用戶個性化配置及云存儲")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("圖床管理")])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "login-img" }, [
+      _c("div", { staticClass: "mask" })
+    ])
   }
 ]
 render._withStripped = true
@@ -556,61 +761,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4520be00", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6f1fc211", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(126)
-}
-var normalizeComponent = __webpack_require__(107)
-/* script */
-var __vue_script__ = __webpack_require__(128)
-/* template */
-var __vue_template__ = __webpack_require__(129)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-4520be00"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Pages/Index/UpdateInfo/UpdateInfo.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4520be00", Component.options)
-  } else {
-    hotAPI.reload("data-v-4520be00", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ })
 

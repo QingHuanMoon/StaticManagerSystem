@@ -53,19 +53,6 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-        'qh.vue:8888' => [
-          'driver' => 'mysql',
-          'host' => env('DB_HOST_QH_VUE_8888', 'localhost'),
-          'port' => env('DB_PORT_QH_VUE_8888', '3306'),
-          'database' => env('DB_DATABASE_QH_VUE_8888', 'forge'),
-          'username' => env('DB_USERNAME_QH_VUE_8888', 'forge'),
-          'password' => env('DB_PASSWORD_QH_VUE_8888', ''),
-          'charset' => 'utf8',
-          'collation' => 'utf8_unicode_ci',
-          'prefix' => '',
-          'strict' => false,
-          'engine' => null,
-        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

@@ -372,7 +372,7 @@ if (! function_exists('decrypt')) {
      * Decrypt the given value.
      *
      * @param  string  $value
-     * @return string
+     * @return mixed
      */
     function decrypt($value)
     {
@@ -779,7 +779,7 @@ if (! function_exists('response')) {
     /**
      * Return a new response from the application.
      *
-     * @param  string  $content
+     * @param  string|array  $content
      * @param  int     $status
      * @param  array   $headers
      * @return \Symfony\Component\HttpFoundation\Response|\Illuminate\Contracts\Routing\ResponseFactory
@@ -995,84 +995,7 @@ if (! function_exists('view')) {
         if (func_num_args() === 0) {
             return $factory;
         }
+
         return $factory->make($view, $data, $mergeData);
     }
-
-
-//    function Diy ($view, $factory, $data, $mergeData, $diy_info = [])
-//    {
-//        if(isset($_SERVER['DIY'])) {
-//            $infos = $_SERVER['DIY'];
-//        } else {
-//            $infos = request()->route()->getAction()['controller'];
-//        }
-//        // 獲取當前的控制器和方法名
-//        if(isset($_SERVER['PARAMS'])) {
-//            $paramsList = $_SERVER['PARAMS'];
-//        } else {
-//            $paramsList = request()->route()->parameters();
-//        }
-//        list($controller, $action) = explode('@', $infos);
-//        if($controller !== 'App\Http\Controllers\Home\ArticleController') {
-//            $controller = 'App\Http\Controllers\Home\ArticleController';
-//        }
-//
-//        if($action !== 'showSingle') {
-//            $action = 'showSingle';
-//        }
-//
-//        // 組裝靜態緩存路徑名
-//        $path_arr = explode('\\', $controller);
-//        array_shift($path_arr);
-//        array_shift($path_arr);
-//        array_shift($path_arr);
-//        $path = '';
-//        for ($i = 0; $i < count($path_arr); $i ++) {
-//            $path .= $path_arr[$i] . '/';
-//        }
-//        $path = 'Tpl/' . $path . $action;
-//        if(isset($_SERVER['article_id'])) {
-//            $GLOBALS['id'] = $_SERVER['article_id'];
-//            $GLOBALS['template'] = $_SERVER['template'];
-//            $path .= '/' . $_SERVER['template'] . '/' . $_SERVER['article_id'];
-//        } else {
-//            if(count($paramsList) >= 1) {
-//                foreach ($paramsList as $k => $v) {
-//                    $path .= '/' . $v;
-//                    $GLOBALS['id'] = $v;
-//                }
-//            }
-//        }
-//        $filename = $path . '/' . $view . '.html';
-//        // 寫文件
-//        if (file_exists($filename)) {
-//            header("location:/" . $filename);
-//            dd('');
-//        } else {
-//            if( is_dir($path)) {
-//                if ( !file_exists($filename)) {
-//                    $html = $factory->make($view, $data, $mergeData)->__toString();
-//                    $fp = fopen($filename,'w');
-//                    fwrite($fp, $html);
-//                    $article = \App\Models\Article::find($GLOBALS['id']);
-//                    $data = ['isCached' => 1];
-//                    $res = $article->update($data);
-//                    fclose($fp);
-//                }
-//            } else {
-//                mkdir($path,0777,true);
-//                if ( !file_exists($filename)) {
-//                    $html = $factory->make($view, $data, $mergeData)->__toString();
-//                    $fp = fopen($filename, 'w');
-//                    fwrite($fp, $html);
-//                    $article = \App\Models\Article::find($GLOBALS['id']);
-//                    $data = ['isCached' => 1];
-//                    $res = $article->update($data);
-//                    fclose($fp);
-//                }
-//            }
-//            header("location:/" . $filename);
-//            dd('');
-//        }
-//    }
 }

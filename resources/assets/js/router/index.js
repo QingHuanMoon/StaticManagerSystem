@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 let routes =
   [
     {path: '/', name: 'Manager', component: r => require(['../components/Manager'], r), children: [
-        {path: '/', name: 'UpdateInfo', component: r => require(['../components/Pages/Index/UpdateInfo/UpdateInfo'], r), meta: { requireAuth: true} },
+        {path: '/', name: 'IndexInfo', component: r => require(['../components/Pages/Index/Index'], r), meta: { requireAuth: true} },
         {path: '/User/UserTable',  name: 'userTable', component: r => require(['../components/Pages/User/UserTable/UserTable'], r), meta: { requireAuth: true }},
         {path: '/User/RoleTable', name: 'roleTable', component: r => require(['../components/Pages/User/RoleTable/RoleTable'], r), meta: { requireAuth: true }},
         {path: '/User/PermissionTable', name: 'permissionTable', component: r => require(['../components/Pages/User/PermissionTable/PermissionTable'], r), meta: { requireAuth: true }},
@@ -21,7 +21,8 @@ let routes =
         {path: '/Article/Publish', name: 'articlePublish', component: r => require(['../components/Pages/Article/Publish/Publish'], r), meta: { requireAuth: true }}
     ]},
     {path: '/login', name: 'Login', component: r => require(['../components/Pages/Login/Login'], r)},
-    {path: '/register', name: 'Register', component: r => require(['../components/Pages/Register/Register'], r)}
+    {path: '/register', name: 'Register', component: r => require(['../components/Pages/Register/Register'], r)},
+    {path: '/admininfo', name: 'AdminInfo', component: r => require(['../components/Pages/AdminInfo/AdminInfo'], r)}
   ]
 
 const router = new VueRouter({

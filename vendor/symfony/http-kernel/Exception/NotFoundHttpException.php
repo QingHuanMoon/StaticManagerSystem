@@ -10,7 +10,6 @@
  */
 
 namespace Symfony\Component\HttpKernel\Exception;
-use App\Models\Article;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -27,5 +26,4 @@ class NotFoundHttpException extends HttpException
     {
         parent::__construct(404, $message, $previous, $headers, $code);
     }
-
 }

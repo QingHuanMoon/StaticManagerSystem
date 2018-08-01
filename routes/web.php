@@ -14,7 +14,7 @@
 
 
 
-Route::domain('qh.vue')->group(function() {
+Route::domain('staticmanagersystem.app')->group(function() {
   Route::get('/', function () {
     dd('主頁還在建設中 !!!, 請訪問/manager進入後台管理');
   });
