@@ -13,9 +13,16 @@ class UserController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return User::orderBy('id', 'desc')->paginate();
+      $size = $request['size'];
+      $users = User::orderBy('id', 'desc')->paginate($size);
+      $count = count($users->toArray()['data']);
+      if($count || $count === 0) {
+        return $this->findSuccess($users);
+      } else {
+        return $this->findFail();
+      }
     }
 
     /**
@@ -37,7 +44,12 @@ class UserController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return User::create($data);
+        $res = User::create($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -75,15 +87,9 @@ class UserController extends ApiController
         $data = $request['data'];
         $user = User::find($id);
         if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -98,15 +104,9 @@ class UserController extends ApiController
         $id = $request['id'];
         $user = User::findOrFail($id);
         if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+          return $this->deleteSuccess($user);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 }

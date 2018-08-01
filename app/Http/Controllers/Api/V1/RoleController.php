@@ -16,7 +16,13 @@ class RoleController extends ApiController
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Role::paginate($size);
+        $roles = Role::paginate($size);
+        $count = count($roles->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($roles);
+        } else {
+          return $this->findFail();
+        }
     }
 
     /**
@@ -38,7 +44,12 @@ class RoleController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return Role::create($data);
+        $res = Role::create($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -70,21 +81,15 @@ class RoleController extends ApiController
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request)
     {
         $id = $request['id'];
         $data = $request['data'];
-        $user = Role::find($id);
-        if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+        $role = Role::find($id);
+        if($role->update($data)) {
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -97,17 +102,11 @@ class RoleController extends ApiController
     public function destroy(Request $request)
     {
         $id = $request['id'];
-        $user = Role::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+        $role = Role::findOrFail($id);
+        if ($role->delete()) {
+          return $this->deleteSuccess($role);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 }

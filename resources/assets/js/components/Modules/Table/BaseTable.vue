@@ -95,15 +95,15 @@
             page: this.curPage
           }
         })
-        this.sourceData = data;
-        this.$store.dispatch('setTotal', data.total)
+        console.log(data)
+        this.sourceData = data.data;
+        this.$store.dispatch('setTotal', data.data.total)
       },
       setVuexExcept(item) {
         this.$store.dispatch('setExcept', item)
       },
       edit(rowNum) {
         if(this.isCreate) {
-          console.log('create')
           this.cancelCreate()
         }
         this.curEdit = rowNum

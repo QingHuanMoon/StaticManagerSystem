@@ -11,13 +11,19 @@ class GameController extends ApiController
 {
     /**
      * Display a listing of the resource.
-     *
+     *  分頁查詢
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Game::paginate($size);
+        $games = Game::paginate($size);
+        $count = count($games->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($games);
+        } else {
+          return $this->findFail();
+        }
     }
 
     /**
@@ -38,8 +44,13 @@ class GameController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request['data'];
-        return Game::create($data);
+        $game = $request['data'];
+        $res = Game::create($game);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -75,17 +86,11 @@ class GameController extends ApiController
     {
         $id = $request['id'];
         $data = $request['data'];
-        $user = Game::find($id);
-        if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+        $game = Game::find($id);
+        if($game->update($data)) {
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -98,17 +103,11 @@ class GameController extends ApiController
     public function destroy(Request $request)
     {
         $id = $request['id'];
-        $user = Game::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+        $game = Game::findOrFail($id);
+        if ($game->delete()) {
+          return $this->deleteSuccess($game);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 

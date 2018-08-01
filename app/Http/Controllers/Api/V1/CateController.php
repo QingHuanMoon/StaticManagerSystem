@@ -18,7 +18,13 @@ class CateController extends ApiController
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Cate::paginate($size);
+        $cats =  Cate::paginate($size);
+        $count = count($cats->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($cats);
+        } else {
+          return $this->findFail();
+        }
     }
 
     /**
@@ -40,7 +46,12 @@ class CateController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return Cate::create($data);
+        $res = Cate::create($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -72,21 +83,15 @@ class CateController extends ApiController
      * @param  \App\Models\Cate  $cate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cate $cate)
+    public function update(Request $request)
     {
         $id = $request['id'];
         $data = $request['data'];
-        $user = Cate::find($id);
-        if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+        $cate = Cate::find($id);
+        if($cate->update($data)) {
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -99,17 +104,11 @@ class CateController extends ApiController
     public function destroy(Request $request)
     {
         $id = $request['id'];
-        $user = Game::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+        $cate = Cate::findOrFail($id);
+        if ($cate->delete()) {
+          return $this->deleteSuccess($cate);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 

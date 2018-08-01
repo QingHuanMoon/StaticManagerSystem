@@ -144,9 +144,9 @@ class ApiController extends Controller
     private function response($data = [])
     {
         if($this->getStatus() === 'success') {
-            $this->returnSuccessData($data);
+            return $this->returnSuccessData($data);
         } else {
-            $this->returnErrorData($data);
+            return $this->returnErrorData($data);
         }
     }
 

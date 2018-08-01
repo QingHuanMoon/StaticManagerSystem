@@ -16,7 +16,14 @@ class TemplateController extends ApiController
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Template::paginate($size);
+        $templates = Template::paginate($size);
+        $count = count($templates->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($templates);
+        } else {
+          return $this->findFail();
+        }
+
     }
 
     /**
@@ -38,7 +45,12 @@ class TemplateController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return Template::create($data);
+        $res = Template::create($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -74,17 +86,11 @@ class TemplateController extends ApiController
     {
         $id = $request['id'];
         $data = $request['data'];
-        $user = Template::find($id);
-        if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+        $template = Template::find($id);
+        if($template->update($data)) {
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -97,17 +103,11 @@ class TemplateController extends ApiController
     public function destroy(Request $request)
     {
         $id = $request['id'];
-        $user = Template::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+        $template = Template::findOrFail($id);
+        if ($template->delete()) {
+          return $this->deleteSuccess($template);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 }

@@ -21,7 +21,13 @@ class ArticleController extends ApiController
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Article::paginate($size);
+        $articles = Article::paginate($size);
+        $count = count($articles->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($articles);
+        } else {
+          return $this->findFail();
+        }
     }
 
     /**
@@ -43,7 +49,12 @@ class ArticleController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return Article::firstOrCreate($data);
+        $res = Article::firstOrCreate($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -80,17 +91,10 @@ class ArticleController extends ApiController
         $id = $request['id'];
         $data = $request['data'];
         $article = Article::find($id);
-        $dirname = 'Tpl/Home/ArticleController/showSingle/' . $id;
         if($article->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+          $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          $this->updateFail();
         }
     }
 
@@ -110,15 +114,9 @@ class ArticleController extends ApiController
             $dirname = resource_path('views') . '/' . env('CACHE_PATH_NAME') . '/' . $id . '/' . $v;
             Helper::deleteDir($dirname);
           }
-          return response()->json([
-              'status' => 200,
-              'msg' => '數據刪除成功',
-          ]);
+          return $this->deleteSuccess($article);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 

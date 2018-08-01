@@ -16,7 +16,13 @@ class PermissionController extends ApiController
     public function index(Request $request)
     {
         $size = $request['size'];
-        return Permission::paginate($size);
+        $permissions = Permission::paginate($size);
+        $count = count($permissions->toArray()['data']);
+        if($count || $count === 0) {
+          return $this->findSuccess($permissions);
+        } else {
+          return $this->findFail();
+        }
     }
 
     /**
@@ -38,7 +44,12 @@ class PermissionController extends ApiController
     public function store(Request $request)
     {
         $data = $request['data'];
-        return Permission::create($data);
+        $res = Permission::create($data);
+        if($res->toArray()['id']) {
+          return $this->storeSuccess($res);
+        } else {
+          return $this->storeFail();
+        }
     }
 
     /**
@@ -74,17 +85,11 @@ class PermissionController extends ApiController
     {
         $id = $request['id'];
         $data = $request['data'];
-        $user = Permission::find($id);
-        if($user->update($data)) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據更新成功',
-            ]);
+        $permisstion = Permission::find($id);
+        if($permisstion->update($data)) {
+          return $this->updateSuccess($data);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據更新失敗',
-            ]);
+          return $this->updateFail();
         }
     }
 
@@ -97,17 +102,11 @@ class PermissionController extends ApiController
     public function destroy(Request $request)
     {
         $id = $request['id'];
-        $user = Permission::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json([
-                'status' => 200,
-                'msg' => '數據刪除成功',
-            ]);
+        $permission = Permission::findOrFail($id);
+        if ($permission->delete()) {
+          return $this->deleteSuccess($permission);
         } else {
-            return response()->json([
-                'status' => -1,
-                'msg' => '數據刪除失敗',
-            ]);
+          return $this->deleteFail();
         }
     }
 }
